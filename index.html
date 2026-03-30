@@ -879,7 +879,7 @@
 
     <div class="player-container fade-in">
       <div class="player-main" style="display: flex; justify-content: center;">
-        <iframe id="spotifyIframe" style="border-radius: 12px;" src="https://open.spotify.com/embed/track/13yANAnKYUQsUem91KLks0?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <div id="spotifyPlayer" style="width: 100%; height: 352px;"></div>
       </div>
 
       <div class="tracklist" id="tracklist">
@@ -1006,8 +1006,8 @@
     </div>
   </footer>
 
+  <script src="https://open.spotify.com/embed/iframe-api/v1"></script>
   <script>
-    // ===== TRACK DATA =====
     const tracks = [
       {
         title: "Billy The Kid",
@@ -1040,7 +1040,7 @@
       {
         title: "Cautionary Tale",
         spotifyId: "6whyAmOgnZyrew8EJeFxG3",
-        art: "https://i.scdn.co/image/ab67616d0000b2739409c3d04509bee44aeb79ec",
+        art: "https://i.scdn.co/image/ab67616d0000b2730ca7c52e20e2b06e519b3436",
         duration: "3:28",
         plays: "4,934"
       }
@@ -1048,7 +1048,7 @@
 
     // ===== PLAYER STATE =====
     let currentTrack = 0;
-    const spotifyIframe = document.getElementById('spotifyIframe');
+    let embedController = null;
 
     // ===== BUILD TRACKLIST =====
     const tracklist = document.getElementById('tracklist');
@@ -1066,13 +1066,29 @@
       tracklist.appendChild(item);
     });
 
+    // ===== SPOTIFY IFRAME API =====
+    window.onSpotifyIframeApiReady = (IFrameAPI) => {
+      const element = document.getElementById('spotifyPlayer');
+      const options = {
+        uri: 'spotify:track:' + tracks[0].spotifyId,
+        theme: 0
+      };
+      const callback = (controller) => {
+        embedController = controller;
+      };
+      IFrameAPI.createController(element, options, callback);
+    };
+
     // ===== LOAD TRACK =====
     function loadTrack(index) {
       currentTrack = index;
       const track = tracks[index];
 
-      // Update Spotify embed iframe
-      spotifyIframe.src = `https://open.spotify.com/embed/track/${track.spotifyId}?utm_source=generator&theme=0&autoplay=1`;
+      // Use the Spotify API controller to load and play
+      if (embedController) {
+        embedController.loadUri('spotify:track:' + track.spotifyId);
+        embedController.play();
+      }
 
       // Update active track in list
       document.querySelectorAll('.track-item').forEach((item, i) => {
@@ -1080,7 +1096,6 @@
       });
     }
 
-    
     // ===== SCROLL ANIMATIONS =====
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1101,8 +1116,7 @@
         nav.style.background = 'transparent';
       }
     });
-
-    </script>
+  </script>
 
 
 </body>
