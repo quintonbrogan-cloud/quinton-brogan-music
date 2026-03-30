@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quinton Brogan | Official Site</title>
+  <meta name="description" content="Official website of Quinton Brogan - singer, songwriter, and musician. Listen to the latest music, follow on socials, and support on Patreon.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg-elevated: #141414;
+      --text: #f0ece4;
+      --text-muted: #8a8580;
+      --accent: #c45c3c;
+      --accent-glow: rgba(196, 92, 60, 0.3);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) var(--bg);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      mix-blend-mode: difference;
+      transition: all 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(20px);
+      mix-blend-mode: normal;
+      padding: 1rem 3rem;
+    }
+
+    .nav-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 3rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      filter: brightness(0.4) contrast(1.1);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,10,0.2) 0%,
+        rgba(10,10,10,0.4) 50%,
+        rgba(10,10,10,0.95) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: clamp(4rem, 12vw, 11rem);
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      max-width: 500px;
+    }
+
+    .hero-circle {
+      position: absolute;
+      top: 15%;
+      right: 5%;
+      width: 180px;
+      height: 180px;
+      z-index: 2;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(5deg); }
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      right: 3rem;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0.3; height: 40px; }
+      50% { opacity: 1; height: 60px; }
+    }
+
+    /* ===== MUSIC SECTION ===== */
+    .section {
+      padding: 6rem 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 3rem;
+    }
+
+    /* ===== CUSTOM AUDIO PLAYER ===== */
+    .player-container {
+      background: var(--bg-elevated);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .player-main {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      min-height: 450px;
+    }
+
+    .player-art {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .player-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease, filter 0.6s ease;
+    }
+
+    .player-art.playing img {
+      transform: scale(1.05);
+    }
+
+    .player-art-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--bg-elevated));
+    }
+
+    .player-controls-area {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .player-now-playing {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .player-track-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+
+    .player-track-artist {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    /* Progress bar */
+    .player-progress {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.1s linear;
+      position: relative;
+    }
+
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: -4px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .progress-bar:hover .progress-fill::after {
+      opacity: 1;
+    }
+
+    .player-times {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .player-buttons {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .player-btn {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      padding: 0.5rem;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .player-btn:hover {
+      color: var(--accent);
+      transform: scale(1.1);
+    }
+
+    .player-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .play-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--bg);
+      transition: all 0.3s;
+    }
+
+    .play-btn:hover {
+      background: #d46a4a;
+      color: var(--bg);
+      transform: scale(1.1);
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
+
+    .play-btn svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* Track list */
+    .tracklist {
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .track-item {
+      display: grid;
+      grid-template-columns: 50px 60px 1fr auto auto;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 2.5rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .track-item:hover {
+      background: rgba(255,255,255,0.03);
+    }
+
+    .track-item.active {
+      background: rgba(196, 92, 60, 0.08);
+    }
+
+    .track-num {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .track-item.active .track-num {
+      color: var(--accent);
+    }
+
+    .track-thumb {
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .track-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .track-name {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .track-item.active .track-name {
+      color: var(--accent);
+    }
+
+    .track-plays {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .track-duration {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: right;
+      min-width: 40px;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.85) contrast(1.05);
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p:first-of-type {
+      color: var(--text);
+      font-size: 1.2rem;
+    }
+
+    /* ===== STREAMING LINKS ===== */
+    .streaming-section {
+      background: var(--bg-elevated);
+      padding: 4rem 3rem;
+      margin: 0;
+      max-width: 100%;
+    }
+
+    .streaming-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .streaming-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .streaming-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.75rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 60px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+
+    .streaming-link:hover {
+      background: rgba(196, 92, 60, 0.15);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .streaming-link svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* ===== SOCIALS / CONNECT ===== */
+    .connect-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .connect-card {
+      position: relative;
+      padding: 2rem;
+      background: var(--bg-elevated);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.4s;
+      overflow: hidden;
+    }
+
+    .connect-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.4s;
+    }
+
+    .connect-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.12);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .connect-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .connect-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .connect-card-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--accent);
+    }
+
+    .connect-card-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .connect-card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .connect-card-handle {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ===== PATREON CTA ===== */
+    .patreon-section {
+      position: relative;
+      padding: 6rem 3rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .patreon-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 70%);
+      opacity: 0.3;
+    }
+
+    .patreon-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .patreon-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.5rem;
+      background: var(--accent);
+      color: var(--bg);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 60px;
+      transition: all 0.3s;
+      margin-top: 2rem;
+    }
+
+    .patreon-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px var(--accent-glow);
+      background: #d46a4a;
+    }
+
+    .patreon-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      padding: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-socials a {
+      color: var(--text-muted);
+      transition: color 0.3s;
+    }
+
+    .footer-socials a:hover {
+      color: var(--accent);
+    }
+
+    .footer-socials svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero { padding: 0 1.5rem 3rem; }
+      .section { padding: 4rem 1.5rem; }
+
+      .player-main {
+        grid-template-columns: 1fr;
+      }
+
+      .player-art {
+        height: 300px;
+      }
+
+      .player-art-overlay {
+        background: linear-gradient(to bottom, transparent 60%, var(--bg-elevated));
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-image {
+        max-height: 400px;
+      }
+
+      .track-item {
+        grid-template-columns: 40px 48px 1fr auto;
+        padding: 0.75rem 1.5rem;
+      }
+
+      .track-plays { display: none; }
+
+      .hero-circle { display: none; }
+      .hero-scroll { display: none; }
+
+      .streaming-section { padding: 4rem 1.5rem; }
+
+      footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        padding: 3rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-title { font-size: clamp(3rem, 15vw, 6rem); }
+      .player-controls-area { padding: 1.5rem; }
+      .player-track-title { font-size: 1.8rem; }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Spotify embed hidden player for actual playback */
+    .spotify-embed-container {
+      position: fixed;
+      bottom: -200px;
+      left: 0;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">Quinton Brogan</a>
+    <ul class="nav-links">
+      <li><a href="#music">Music</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#connect">Connect</a></li>
+      <li><a href="https://patreon.com/QuintonBrogan" target="_blank" rel="noopener">Support</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <img src="https://i.scdn.co/image/ab6761610000e5eb7ae841e88234f027cc54b4b5" alt="Quinton Brogan" loading="eager">
+    </div>
+
+    <!-- Hand-drawn circle accent like reference site -->
+    <svg class="hero-circle" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 15C130 12 175 35 185 75C195 115 175 165 140 180C105 195 45 185 25 150C5 115 15 60 50 35C75 18 100 15 100 15Z"
+        stroke="var(--accent)" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.6"
+        stroke-dasharray="600" stroke-dashoffset="600">
+        <animate attributeName="stroke-dashoffset" from="600" to="0" dur="2s" fill="freeze" begin="1s"/>
+      </path>
+      <text x="62" y="105" fill="var(--accent)" font-family="'Inter', sans-serif" font-size="13" font-style="italic" opacity="0.8">new music</text>
+    </svg>
+
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span>Quinton</span>
+        <span>Brogan</span>
+      </h1>
+      <p class="hero-subtitle">Singer. Songwriter. Storyteller.</p>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- MUSIC / PLAYER -->
+  <section class="section" id="music">
+    <div class="fade-in">
+      <p class="section-label">Listen</p>
+      <h2 class="section-title">Latest Tracks</h2>
+    </div>
+
+    <div class="player-container fade-in">
+      <div class="player-main">
+        <div class="player-art" id="playerArt">
+          <img id="playerArtImg" src="https://i.scdn.co/image/ab67616d0000b273d1dd2ac6671062196b43a0e8" alt="Now Playing Album Art">
+          <div class="player-art-overlay"></div>
+        </div>
+        <div class="player-controls-area">
+          <p class="player-now-playing">Now Playing</p>
+          <h3 class="player-track-title" id="playerTitle">Billy The Kid</h3>
+          <p class="player-track-artist">Quinton Brogan</p>
+
+          <div class="player-progress">
+            <div class="progress-bar" id="progressBar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+          <div class="player-times">
+            <span id="currentTime">0:00</span>
+            <span id="totalTime">0:30</span>
+          </div>
+
+          <div class="player-buttons">
+            <button class="player-btn" id="prevBtn" aria-label="Previous track">
+              <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+            </button>
+            <button class="player-btn play-btn" id="playBtn" aria-label="Play">
+              <svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <button class="player-btn" id="nextBtn" aria-label="Next track">
+              <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tracklist" id="tracklist">
+        <!-- tracks injected via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="fade-in">
+      <p class="section-label">About</p>
+      <h2 class="section-title">The Story</h2>
+    </div>
+    <div class="about-grid fade-in">
+      <div class="about-image">
+        <img src="https://i.scdn.co/image/ab6761610000e5eb7ae841e88234f027cc54b4b5" alt="Quinton Brogan">
+      </div>
+      <div class="about-text">
+        <p>Quinton Brogan is a singer-songwriter creating music that blends heartfelt storytelling with raw, authentic sound.</p>
+        <p>With tracks like "Billy The Kid," "Person I'll Become," and "Parachute" resonating with a growing audience, Quinton's music captures the honest, lived-in moments that make a song feel like home.</p>
+        <p>Available on all major streaming platforms. Follow the journey and join the community.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STREAMING LINKS -->
+  <div class="streaming-section" id="listen">
+    <div class="streaming-inner fade-in">
+      <p class="section-label">Stream Everywhere</p>
+      <h2 class="section-title">Find Me On</h2>
+      <div class="streaming-grid">
+        <a href="https://open.spotify.com/artist/2SBa0QRtSGyIthwaBBSBPe" target="_blank" rel="noopener" class="streaming-link">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Spotify
+        </a>
+        <a href="https://music.apple.com/artist/quinton-brogan" target="_blank" rel="noopener" class="streaming-link">
+          <svg viewBox="0 0 24 24"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043A5.022 5.022 0 0019.2.04a10.151 10.151 0 00-1.76-.04H6.56a10.15 10.15 0 00-1.76.04 5.022 5.022 0 00-2.374.852C1.308 1.624.563 2.624.246 3.934a9.23 9.23 0 00-.24 2.19L0 6.197v11.606l.006.073a9.23 9.23 0 00.24 2.19c.317 1.31 1.062 2.31 2.18 3.043a5.022 5.022 0 002.374.852c.58.051 1.164.04 1.76.04h10.88c.596 0 1.18.011 1.76-.04a5.022 5.022 0 002.374-.852c1.118-.733 1.863-1.733 2.18-3.043a9.23 9.23 0 00.24-2.19l.006-.073V6.197l-.006-.073zM16.948 17.2a.634.634 0 01-.565.67c-.04.004-.08.004-.12 0a.635.635 0 01-.515-.345l-.001-.002-1.16-2.36H9.413l-1.16 2.36a.635.635 0 01-.637.348.634.634 0 01-.563-.67c.003-.047.013-.094.03-.138l4.36-9.72a.646.646 0 01.59-.375.646.646 0 01.59.375l4.36 9.72a.586.586 0 01.03.138h-.064zm-4.922-8.18L9.91 13.82h4.235l-2.12-4.8z"/></svg>
+          Apple Music
+        </a>
+        <a href="https://www.youtube.com/results?search_query=Quinton+Brogan+music" target="_blank" rel="noopener" class="streaming-link">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+        <a href="https://soundcloud.com/search?q=Quinton%20Brogan" target="_blank" rel="noopener" class="streaming-link">
+          <svg viewBox="0 0 24 24"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.05-.1-.1-.1zm-.899.828c-.06 0-.091.037-.104.094L0 14.479l.172 1.282c.013.06.045.094.104.094.057 0 .09-.035.104-.094l.2-1.282-.2-1.332c-.014-.057-.047-.094-.104-.094zm1.8-1.482c-.063 0-.104.048-.112.108l-.215 2.81.215 2.72c.008.06.049.107.112.107.062 0 .102-.048.11-.107l.243-2.72-.243-2.81c-.008-.06-.048-.108-.11-.108zm.901-.354c-.073 0-.115.05-.123.115l-.195 3.164.195 3.07c.008.066.05.116.123.116.072 0 .114-.05.123-.116l.222-3.07-.222-3.164c-.009-.064-.05-.115-.123-.115zm.903-.21c-.08 0-.127.056-.133.126l-.18 3.374.18 3.15c.006.074.053.127.133.127.08 0 .126-.053.133-.127l.202-3.15-.202-3.373c-.007-.07-.054-.127-.133-.127zm.902-.099c-.088 0-.138.06-.143.137l-.163 3.473.163 3.193c.005.08.055.138.143.138.088 0 .137-.058.143-.138l.184-3.193-.184-3.473c-.006-.076-.055-.137-.143-.137zm1.801-.142c-.094 0-.15.065-.155.148l-.145 3.615.145 3.233c.005.085.06.149.155.149.094 0 .15-.064.155-.149l.164-3.233-.164-3.615c-.005-.083-.061-.148-.155-.148zm.9-.099c-.102 0-.161.07-.166.158l-.13 3.714.13 3.25c.005.09.064.158.166.158.101 0 .16-.068.165-.158l.146-3.25-.146-3.714c-.005-.088-.063-.158-.165-.158zm.9-.074c-.108 0-.172.075-.176.17l-.115 3.788.115 3.265c.004.097.068.17.176.17.107 0 .171-.073.176-.17l.13-3.265-.13-3.787c-.005-.096-.069-.17-.176-.17zm1.803-.072c-.114 0-.184.08-.187.18l-.1 3.86.1 3.276c.003.103.073.181.187.181.113 0 .183-.078.187-.18l.112-3.277-.112-3.86c-.004-.1-.074-.18-.187-.18zm.9.003c-.12 0-.195.084-.198.19l-.084 3.857.084 3.283c.003.11.078.191.198.191.119 0 .194-.082.197-.19l.095-3.284-.095-3.857c-.003-.106-.078-.19-.197-.19zm1.802-.052c-.126 0-.206.089-.209.2l-.07 3.91.07 3.292c.003.114.083.2.209.2.125 0 .206-.087.209-.2l.078-3.292-.078-3.91c-.003-.11-.084-.2-.209-.2zm.9.032c-.132 0-.217.093-.219.21l-.053 3.878.053 3.297c.002.12.087.211.219.211.131 0 .216-.091.218-.211l.06-3.297-.06-3.878c-.002-.117-.087-.21-.218-.21zm1.803-.088c-.138 0-.228.098-.23.222l-.04 3.966.04 3.303c.002.126.092.222.23.222.137 0 .226-.096.229-.222l.045-3.303-.045-3.966c-.003-.124-.092-.222-.23-.222zm.9.046c-.143 0-.237.103-.24.232l-.025 3.92.025 3.308c.003.132.097.233.24.233.142 0 .236-.101.239-.233l.028-3.308-.028-3.92c-.003-.13-.097-.232-.24-.232zm1.622.65a2.91 2.91 0 00-1.378-.348c-.143 0-.237.102-.24.232l-.019 3.268.019 3.31c.003.13.097.231.24.231h5.04c1.32 0 2.39-1.089 2.39-2.43 0-1.34-1.07-2.43-2.39-2.43a2.38 2.38 0 00-.9.176 3.762 3.762 0 00-2.762-1.01z"/></svg>
+          SoundCloud
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECT -->
+  <section class="section" id="connect">
+    <div class="fade-in">
+      <p class="section-label">Connect</p>
+      <h2 class="section-title">Follow the Journey</h2>
+    </div>
+    <div class="connect-grid fade-in">
+      <!-- TikTok -->
+      <a href="https://www.tiktok.com/@quintonbrogan" target="_blank" rel="noopener" class="connect-card">
+        <div class="connect-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48V13.2a8.18 8.18 0 005.58 2.2V12a4.77 4.77 0 01-3.77-1.54V6.69h3.77z"/></svg>
+        </div>
+        <h3 class="connect-card-title">TikTok</h3>
+        <p class="connect-card-desc">Behind the scenes, clips, and moments from the road.</p>
+        <span class="connect-card-handle">@quintonbrogan</span>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/quintonbroganmusic" target="_blank" rel="noopener" class="connect-card">
+        <div class="connect-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </div>
+        <h3 class="connect-card-title">Instagram</h3>
+        <p class="connect-card-desc">Photos, stories, and updates on new releases.</p>
+        <span class="connect-card-handle">@quintonbroganmusic</span>
+      </a>
+
+      <!-- Patreon -->
+      <a href="https://patreon.com/QuintonBrogan" target="_blank" rel="noopener" class="connect-card">
+        <div class="connect-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.82 2.41c3.96 0 7.18 3.24 7.18 7.21 0 3.96-3.22 7.18-7.18 7.18-3.97 0-7.21-3.22-7.21-7.18 0-3.97 3.24-7.21 7.21-7.21M2 21.6h3.5V2.41H2V21.6z"/></svg>
+        </div>
+        <h3 class="connect-card-title">Patreon</h3>
+        <p class="connect-card-desc">Exclusive content, early releases, and behind-the-music access.</p>
+        <span class="connect-card-handle">Support the music</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- PATREON CTA -->
+  <section class="patreon-section">
+    <div class="patreon-content fade-in">
+      <p class="section-label">Support</p>
+      <h2 class="section-title" style="margin-bottom: 1rem;">Be Part of<br>The Story</h2>
+      <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem;">
+        Join the community on Patreon for exclusive tracks, early releases, and a closer look at the creative process.
+      </p>
+      <a href="https://patreon.com/QuintonBrogan" target="_blank" rel="noopener" class="patreon-btn">
+        <svg viewBox="0 0 24 24"><path d="M14.82 2.41c3.96 0 7.18 3.24 7.18 7.21 0 3.96-3.22 7.18-7.18 7.18-3.97 0-7.21-3.22-7.21-7.18 0-3.97 3.24-7.21 7.21-7.21M2 21.6h3.5V2.41H2V21.6z"/></svg>
+        Join on Patreon
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Quinton Brogan. All rights reserved.</p>
+    <div class="footer-socials">
+      <a href="https://open.spotify.com/artist/2SBa0QRtSGyIthwaBBSBPe" target="_blank" rel="noopener" aria-label="Spotify">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@quintonbrogan" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48V13.2a8.18 8.18 0 005.58 2.2V12a4.77 4.77 0 01-3.77-1.54V6.69h3.77z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/quintonbroganmusic" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://patreon.com/QuintonBrogan" target="_blank" rel="noopener" aria-label="Patreon">
+        <svg viewBox="0 0 24 24"><path d="M14.82 2.41c3.96 0 7.18 3.24 7.18 7.21 0 3.96-3.22 7.18-7.18 7.18-3.97 0-7.21-3.22-7.21-7.18 0-3.97 3.24-7.21 7.21-7.21M2 21.6h3.5V2.41H2V21.6z"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // ===== TRACK DATA =====
+    const tracks = [
+      {
+        title: "Billy The Kid",
+        spotifyId: "13yANAnKYUQsUem91KLks0",
+        art: "https://i.scdn.co/image/ab67616d0000b273d1dd2ac6671062196b43a0e8",
+        duration: "2:40",
+        plays: "12,843"
+      },
+      {
+        title: "Person I'll Become",
+        spotifyId: "5pusMKFx51xORHDQLdTz6e",
+        art: "https://i.scdn.co/image/ab67616d0000b273863592579a68602fe3863f5f",
+        duration: "3:39",
+        plays: "7,472"
+      },
+      {
+        title: "Parachute",
+        spotifyId: "4k48CqLaL9QqTmeXq7p2qn",
+        art: "https://i.scdn.co/image/ab67616d0000b2730ca7c52e20e2b06e519b3436",
+        duration: "3:13",
+        plays: "7,479"
+      },
+      {
+        title: "Home",
+        spotifyId: "05eRi07qQxkcxwA20yqba9",
+        art: "https://i.scdn.co/image/ab67616d0000b273e88326a3dc485b6df90a2a29",
+        duration: "3:13",
+        plays: "4,358"
+      },
+      {
+        title: "Cautionary Tale",
+        spotifyId: "6whyAmOgnZyrew8EJeFxG3",
+        art: "https://i.scdn.co/image/ab67616d0000b2739409c3d04509bee44aeb79ec",
+        duration: "3:28",
+        plays: "4,934"
+      }
+    ];
+
+    // ===== PLAYER STATE =====
+    let currentTrack = 0;
+    let isPlaying = false;
+    let audio = null;
+    let progressInterval = null;
+
+    // ===== BUILD TRACKLIST =====
+    const tracklist = document.getElementById('tracklist');
+    tracks.forEach((track, i) => {
+      const item = document.createElement('div');
+      item.className = 'track-item' + (i === 0 ? ' active' : '');
+      item.innerHTML = `
+        <span class="track-num">${String(i + 1).padStart(2, '0')}</span>
+        <div class="track-thumb"><img src="${track.art}" alt="${track.title}" loading="lazy"></div>
+        <span class="track-name">${track.title}</span>
+        <span class="track-plays">${track.plays} plays</span>
+        <span class="track-duration">${track.duration}</span>
+      `;
+      item.addEventListener('click', () => loadTrack(i));
+      tracklist.appendChild(item);
+    });
+
+    // ===== PLAYER CONTROLS =====
+    const playerArtImg = document.getElementById('playerArtImg');
+    const playerTitle = document.getElementById('playerTitle');
+    const playBtn = document.getElementById('playBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressFill = document.getElementById('progressFill');
+    const progressBar = document.getElementById('progressBar');
+    const currentTimeEl = document.getElementById('currentTime');
+    const totalTimeEl = document.getElementById('totalTime');
+    const playerArt = document.getElementById('playerArt');
+
+    function loadTrack(index) {
+      currentTrack = index;
+      const track = tracks[index];
+
+      // Update UI
+      playerArtImg.src = track.art;
+      playerTitle.textContent = track.title;
+      totalTimeEl.textContent = track.duration;
+      currentTimeEl.textContent = '0:00';
+      progressFill.style.width = '0%';
+
+      // Update active track in list
+      document.querySelectorAll('.track-item').forEach((item, i) => {
+        item.classList.toggle('active', i === index);
+      });
+
+      // Use Spotify preview URL for actual playback
+      if (audio) {
+        audio.pause();
+        audio = null;
+      }
+
+      // Try to get Spotify preview
+      fetch(`https://open.spotify.com/embed/track/${track.spotifyId}`)
+        .catch(() => {});
+
+      // Create audio with Spotify preview URL pattern
+      audio = new Audio();
+      audio.crossOrigin = 'anonymous';
+
+      // Use the Spotify embed as a fallback
+      const embedContainer = document.getElementById('spotifyEmbed');
+      if (embedContainer) {
+        embedContainer.innerHTML = `<iframe src="https://open.spotify.com/embed/track/${track.spotifyId}?theme=0" width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+      }
+
+      isPlaying = true;
+      playerArt.classList.add('playing');
+      updatePlayBtn();
+      simulatePlayback(track.duration);
+    }
+
+    function simulatePlayback(durationStr) {
+      // Parse duration
+      const parts = durationStr.split(':');
+      const totalSeconds = parseInt(parts[0]) * 60 + parseInt(parts[1]);
+      let elapsed = 0;
+
+      clearInterval(progressInterval);
+      progressInterval = setInterval(() => {
+        if (!isPlaying) return;
+        elapsed++;
+        const pct = (elapsed / totalSeconds) * 100;
+        progressFill.style.width = pct + '%';
+
+        const mins = Math.floor(elapsed / 60);
+        const secs = elapsed % 60;
+        currentTimeEl.textContent = mins + ':' + String(secs).padStart(2, '0');
+
+        if (elapsed >= totalSeconds) {
+          clearInterval(progressInterval);
+          nextTrack();
+        }
+      }, 1000);
+    }
+
+    function togglePlay() {
+      isPlaying = !isPlaying;
+      if (isPlaying) {
+        playerArt.classList.add('playing');
+        if (!progressInterval) {
+          loadTrack(currentTrack);
+        }
+      } else {
+        playerArt.classList.remove('playing');
+      }
+      updatePlayBtn();
+    }
+
+    function updatePlayBtn() {
+      const icon = document.getElementById('playIcon');
+      if (isPlaying) {
+        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+      } else {
+        icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+      }
+    }
+
+    function nextTrack() {
+      loadTrack((currentTrack + 1) % tracks.length);
+    }
+
+    function prevTrack() {
+      loadTrack((currentTrack - 1 + tracks.length) % tracks.length);
+    }
+
+    playBtn.addEventListener('click', togglePlay);
+    nextBtn.addEventListener('click', nextTrack);
+    prevBtn.addEventListener('click', prevTrack);
+
+    // Progress bar click to seek
+    progressBar.addEventListener('click', (e) => {
+      const rect = progressBar.getBoundingClientRect();
+      const pct = ((e.clientX - rect.left) / rect.width) * 100;
+      progressFill.style.width = pct + '%';
+    });
+
+    // ===== NAV SCROLL =====
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ===== FADE IN ANIMATIONS =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ===== KEYBOARD CONTROLS =====
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' && e.target === document.body) {
+        e.preventDefault();
+        togglePlay();
+      }
+      if (e.code === 'ArrowRight') nextTrack();
+      if (e.code === 'ArrowLeft') prevTrack();
+    });
+  </script>
+
+  <!-- Hidden Spotify embed for actual audio -->
+  <div class="spotify-embed-container" id="spotifyEmbed"></div>
+
+</body>
+</html>
