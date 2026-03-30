@@ -1072,7 +1072,7 @@
       const track = tracks[index];
 
       // Update Spotify embed iframe
-      spotifyIframe.src = `https://open.spotify.com/embed/track/${track.spotifyId}?utm_source=generator&theme=0`;
+      spotifyIframe.src = `https://open.spotify.com/embed/track/${track.spotifyId}?utm_source=generator&theme=0&autoplay=1`;
 
       // Update active track in list
       document.querySelectorAll('.track-item').forEach((item, i) => {
