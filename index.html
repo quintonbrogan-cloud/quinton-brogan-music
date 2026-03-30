@@ -107,7 +107,7 @@
       height: 100%;
       object-fit: cover;
       object-position: center 20%;
-      filter: brightness(0.4) contrast(1.1);
+      filter: brightness(0.55) contrast(1.05);
     }
 
     .hero-bg::after {
@@ -116,9 +116,9 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(10,10,10,0.2) 0%,
-        rgba(10,10,10,0.4) 50%,
-        rgba(10,10,10,0.95) 100%
+        rgba(10,10,10,0.1) 0%,
+        rgba(10,10,10,0.25) 50%,
+        rgba(10,10,10,0.85) 100%
       );
     }
 
@@ -165,6 +165,43 @@
     @keyframes float {
       0%, 100% { transform: translateY(0) rotate(0deg); }
       50% { transform: translateY(-15px) rotate(5deg); }
+    }
+
+        .hero-album {
+      position: absolute;
+      top: calc(15% + 200px);
+      right: 5%;
+      width: 140px;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeSlideIn 1s ease forwards;
+      animation-delay: 2s;
+    }
+
+    .hero-album img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-album img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+    }
+
+    .hero-album-label {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .hero-scroll {
@@ -750,6 +787,7 @@
       .track-plays { display: none; }
 
       .hero-circle { display: none; }
+      .hero-album { display: none; }
       .hero-scroll { display: none; }
 
       .streaming-section { padding: 4rem 1.5rem; }
@@ -823,6 +861,11 @@
       <text x="62" y="105" fill="var(--accent)" font-family="'Inter', sans-serif" font-size="13" font-style="italic" opacity="0.8">new music</text>
     </svg>
 
+    <a href="#music" class="hero-album">
+      <img src="album-cover.jpg" alt="Thoughts on Death and How It Relates to Life">
+      <p class="hero-album-label">Coming Soon</p>
+    </a>
+
     <div class="hero-content">
       <h1 class="hero-title">
         <span>Quinton</span>
@@ -892,7 +935,7 @@
     </div>
     <div class="about-grid fade-in">
       <div class="about-image">
-        <img src="https://i.scdn.co/image/ab6761670000ecd42f130ef63f8d3da30257f433" alt="Quinton Brogan">
+        <img src="about-photo.jpg" style="object-position: center 30%;" alt="Quinton Brogan">
       </div>
       <div class="about-text">
         <p>Quinton Brogan is a singer-songwriter creating music that blends heartfelt storytelling with raw, authentic sound.</p>
